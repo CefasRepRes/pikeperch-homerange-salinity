@@ -1,0 +1,22 @@
+Label,Station,Longitude,Latitude,Receiver,Logger,Tidal,Median salinity (PSU) [range],Number fish detected
+1,"Riverside, New Charlton, Thames Barrier",0.026655,51.494427,5177,1795,Yes,6.65 [0 - 44.8],0
+2,"North Greenwich Pier, Millenium Dome",0.008874,51.502548,5175,1773,Yes,6.4 [2.14 - 11.88],0
+3,"Cherry Garden Pier, Tower Bridge",-0.062323,51.501129,4834,1772,Yes,0.01 [0.01 - 0.54],0
+4,"Hurlingham Harbour, Putney Bridge",-0.197512,51.464689,4833,1800,Yes,0.02 [0 - 0.27],0
+5,"Chiswick Pier, Corney Reach Way",-0.250826,51.482294,5176,1787,Yes,1.39 [1.22 - 1.71],4
+6,"Thames Path, Kew Bridge",-0.286723,51.486718,4825,1788,Yes,1.22 [0.9 - 1.64],4
+7,"Buccleuch Passage, Richmond Bridge",-0.307213,51.458069,4831,1792,Yes,1.47 [1.28 - 1.96],0
+8,Twickenham Ferry,-0.314385,51.447031,4832,1777,Yes,2.58 [2.55 - 2.6],0
+9,"Strawberry Vale, Teddington",-0.328866,51.435116,4824,1793,No,1.1 [0.88 - 1.45],10
+10,Teddington Tamesis sailing club,-0.307351,51.423225,4829,1791,No,2 [1.75 - 2.56],1
+11,Ferry Rd Thames Ditton,-0.326017,51.391417,4833,1787,No,1.57 [1.24 - 1.87],0
+12,"Alexandra Rd, u/s of Thames Ditton Island",-0.333619,51.396597,4831,1792,No,1.72 [1.58 - 1.95],9
+13,Hampton Ferry Boat House,-0.362029,51.412564,4835,1778,No,0.71 [0.49 - 1.05],2
+14,"Felix Lane, Shepperton Marinas",-0.424906,51.389713,4832,1777,No,2.14 [1.77 - 2.67],3
+15,"Thames Meadow, u/s of Walton Bridge",-0.434515,51.384869,4830,1772,No,0.01 [0 - 0.01],3
+16,"Hambhaugh Island, Weybridge Lock",-0.457534,51.381532,4826,1782,No,2.01 [1.62 - 2.4],3
+17,"Hambhaugh Island, Weybridge Lock",-0.457534,51.381532,4826,1800,No,0.01 [0.01 - 0.01],3
+18,"Dockett Eddy, Chertsey",-0.472215,51.387318,4827,1782,No,1.61 [1.36 - 2.1],0
+19,"Alfie's Lock, Pickets Lock Lane, Edmonton",-0.032422,51.62588,4829,1791,No,2.21 [1.88 - 2.4],0
+20,"South Island Marina, d/s of Ponders Lock",-0.030765,51.640779,4829,1791,No,2.86 [2.03 - 3.17],0
+21,"Refuges, Government Row/Smeaton Rd",-0.017684,51.670306,4830,1772,No,0.01 [0.01 - 0.01],0

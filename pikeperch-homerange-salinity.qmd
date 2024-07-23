@@ -1,0 +1,427 @@
+---
+# Document details
+title: "Tracking the invasive and euryhaline pikeperch *Sander lucioperca* in the lower River Thames using acoustic telemetry indicates no movements into areas of relatively high salinity"
+# date: "`r format(Sys.time(), '%A %d %B %Y')`"
+author: "Saulius Stakėnas$^{1,2,*}$, Stephen D. Gregory$^{3,4}$, J. Robert Britton$^{4,+}$, Jessica E. Marsh$^{3,4,5}$, Ali Serhan Tarkan$^{4,6,7}$, Grzegorz Zięba$^{7}$, Keith J. Wesley$^{8}$ and Gordon H. Copp$^{1,4,7,9,*}$"
+authors: 
+  - name: Saulius Stakėnas$^{1,2,*}$
+    orcid: 0000-0001-5424-9221
+  - name: Stephen D. Gregory$^{3,4}$
+    orcid: 0000-0002-8230-0191
+  - name: J. Robert Britton$^{4,+}$
+    orcid: 0000-0003-1853-3086
+  - name: Jessica E. Marsh$^{3,4,5}$
+    orcid: 0000-0003-1154-4444
+  - name: Ali Serhan Tarkan$^{4,6,7}$
+    orcid: 0000-0001-8628-0514
+  - name: Grzegorz Zięba$^{6}$
+    orcid: 0000-0003-4443-6802
+  - name: Keith J. Wesley$^{8}$
+  - name: Gordon H. Copp$^{1,4,6,9,*}$
+    orcid: 0000-0002-4112-3440
+corresponding: "J. Robert Britton [rbritton@bournemouth.ac.uk](mailto:rbritton@bournemouth.ac.uk)"
+abstract-title: "Affiliations"
+abstract: |
+
+  ^1^ Salmon & Freshwater Team, Centre for Environment, Fisheries & Aquaculture Science, Lowestoft, Suffolk, UK
+
+  ^2^ Department of Freshwater Ecology, Institute of Ecology of Vilnius University, Vilnius, Lithuania
+
+  ^3^ The Centre for Environment, Fisheries and Aquaculture Science, Weymouth, Dorset, UK
+  
+  ^4^ Department of Life and Environmental Sciences, Faculty of Science and Technology, Bournemouth University, Poole, Dorset, UK
+  
+  ^5^ Salmon and Trout Research Centre, Game and Wildlife Conservation Trust, Wareham, Dorset, UK
+
+  ^6^ Department of Ecology and Vertebrate Zoology, Faculty of Biology and Environmental Protection, University of Lodz, Lodz, Poland
+
+  ^7^ Department of Basic Sciences, Faculty of Fisheries, Muğla Sıtkı Koçman University, Menteşe, Muğla, Turkey
+
+  ^8^ Bedwell Fisheries Services & Fish Farms, Welham Green, Hertfordshire, UK
+
+  ^9^ Environmental & Life Sciences Graduate Programme, Trent University, Peterborough, Ontario, Canada
+
+  \* Deceased
+
+  \+ Corresponding author: {{< meta corresponding >}}
+
+# Output details
+format: 
+  html:
+    embed-resources: true
+    toc: true
+  # docx:
+  #   highlight-style: github
+filters: 
+  - docx-landscape.lua
+
+# References
+csl: ecology.csl # more at www.zotero.org/styles
+bibliography: references.bib
+link-citations: true
+
+# Analysis details
+version: "`r version$version.string`"
+packages: ""
+dependencies: ""
+---
+
+```{r}
+#| label: "doc_setup"
+#| echo: false
+#| warning: false
+#| message: false
+
+# document setup ----------------------------------------------------------
+
+# clear workspace
+rm(list = ls())
+
+# libraries and functions
+library(here)
+source(here("scripts", "libraries-and-functions.R"))
+
+# knitr options
+options(knitr.kable.NA = "")
+
+# inline tables and figures
+inline <- TRUE
+endofms <- ifelse(inline, FALSE, TRUE)
+
+```
+
+**Short title** Movements of invasive pikeperch
+
+**Keywords** acoustic telemetry, distance travelled, direction travelled, tidal state, zander
+
+\newpage
+
+## Abstract
+Native to Central and Eastern Europe, the euryhaline pikeperch *Sander lucioperca* can acclimatize to elevated salinity levels (e.g., up to 30‰), but it remains unknown whether their invasive populations use this ability to inhabit and/or disperse through brackish waters, such as estuaries and inshore areas. To test whether invasive pikeperch show a propensity to move into areas of relatively high salinity, their spatial use and movement patterns (e.g., home range, distances moved, and movement rates) were assessed using acoustic telemetry in the upper River Thames estuary, southeast England. Analyses revealed that individual pikeperch were capable of moving relatively long distances in a short time (e.g., speeds up to 70 m min ), with movement patterns associated more with tidal state and elevation at the water surface (both assumed to relate to changes in salinity) than diurnal changes. There were no recorded movements of any pikeperch into the more saline, downstream waters of the estuary where salinity levels were recorded to over 40‰, with the mean salinity in the most downstream area where pikeperch were detected being 1.39‰ (range of logger: 1.22–1.71). The results suggest that these pikeperch did not use high salinity waters when less saline waters were available, and thus the risk that they will use to move through high salinity areas to expand their invasive range appears low. Accordingly, efforts to minimize risks of the further dispersal of invasive pikeperch populations can focus on control and containment programmes within fresh waters.
+
+<!-- Analysis starts here Analysis starts here Analysis starts here Analysis starts here -->
+
+```{r}
+#| label: "analysis"
+#| echo: false
+#| warning: false
+#| message: false
+#| results: hide
+
+# choose analysis ---------------------------------------------------------
+
+# choose analyses
+do__orgdata <- 0
+do__combdata <- 0
+do__rawtables <- 0
+do__rawplots <- 0
+do__analysis <- 0
+
+# r setup -----------------------------------------------------------------
+source(here("scripts", "r-setup.R"))
+
+# analysis options --------------------------------------------------------
+source(here("scripts", "analysis-options.R"))
+
+# global variables --------------------------------------------------------
+source(here("scripts", "global-variables.R"))
+
+# if any analyses chosen, then do analysis
+anly_choices <- sapply(ls(pattern = "do__"), function(v) eval(parse(text = v)))
+do__anly <- ifelse(any(as.logical(anly_choices)), 1, 0)
+if (do__anly) {
+  
+  # organise data ---------------------------------------------------------
+  if (do__orgdata) source(here("scripts", "00-orgdata.R"))
+  
+  # combine data ----------------------------------------------------------
+  if (do__combdata) source(here("scripts", "01-combdata.R"))
+
+  # rawtables script ------------------------------------------------------
+  if (do__rawtables) source(here("scripts", "02-rawtables.R"))
+  
+  # rawplots script -------------------------------------------------------
+  if (do__rawplots) source(here("scripts", "03-rawplots.R"))
+
+  # analysis1 script ------------------------------------------------------
+  if (do__analysis) source(here("scripts", "04-analysis.R"))
+
+}
+
+# close -------------------------------------------------------------------
+source(here("scripts", "close.R"))
+
+```
+
+<!-- Document starts here Document starts here Document starts here Document starts here -->
+
+\newpage
+
+
+# Introduction
+
+The ability of newly introduced non-native species to establish, disperse, and colonize new areas is fundamental to their invasion success [@Andrew2010; @DominguezAlmela2022; @Britton2023]. The rate at which non-native species disperse in a novel environment is a function of their biological traits, including their dispersal abilities, coupled with the abiotic characteristics of the environment, especially habitat connectivity [@Andrew2010]. The natural dispersal of non-native freshwater fishes requires fluvial connectivity [@Gozlan2010], with intra-catchment dispersal rates dependent on the extent to which the river network has been fragmented [@Mari2014], with multiple barriers, such as dams, weirs and culverts, being encountered in many rivers [@Belletti2020]. These barriers both inhibit the spread of invasive species [@Daniels2022] and prevent the free ranging of native species [@Meixler2009].
+
+Limiting and preventing the dispersal of non-native fish species into novel environments are important for protecting native freshwater biodiversity from the impacts of their invasions [@Dudgeon2006; @Reid2019; @Britton2023]. Efforts to prevent the dispersal of freshwater non-native species thus include the construction of physical, electric, chemical, and acoustic barriers [@Jones2021]. The use of chemical barriers is analogous to the natural salinity gradients encountered in lower river reaches and estuaries that usually prevent the further downstream dispersal of most non-native freshwater fishes [@Brown2007]. However, the relatively high salinity tolerances of euryhaline non-native fishes potentially enable their movements across salinity gradients, with non-native fishes such as the Ponto-Caspian round goby *Neogobius melanostomus* being invasive in both freshwater and brackish waters [@Kornis2012; @Puntila-Dodd2021]. For invasive euryhaline fishes, the presence of strong salinity gradients in the tidal reaches of rivers might thus be insufficient to prevent their downstream dispersal, raising the possibility of their spread between river catchments through estuarine and inshore areas [@Brown2007].
+
+The euryhaline pikeperch (or zander) *Sander lucioperca* (L.) is a popular angler target species in Europe, which has resulted in its introduction across much of Western Europe, with invasive populations present in countries including France, Spain, Portugal, and Great Britain [@Elvira2001; @Kopp2009; @Gago2021]. In Britain, pikeperch was introduced in 1878 into enclosed waters in the East of England [@Copp2003], with subsequent translocations into rivers occurring during the 1960s [@Wheeler1974], with these later releases leading to the species establishing and invading open waters [@Copp2003; @Hickley1986; @Linfield1979]. The capture of pikeperch was subsequently reported by anglers from other catchments throughout the 1970s [@Hickley1986; @Wheeler1974], with self-sustaining populations now present throughout eastern, central, and western England [@Copp2003; @Nunn2007; @Smith1998]. Despite occasional reported sightings, there are not yet any confirmed reports of self-sustaining pikeperch populations in northern and southwest England [@Nolan2019b].
+
+With pikeperch now present at the tidal limits of some major river systems within their current range in England, such as in the Rivers Thames, Severn, Trent, and Great Ouse, their euryhaline traits suggest there is a possibility of their spread into neighbouring, uninvaded river catchments via dispersal through brackish or salt-water bridges [@Brown2007]. Movements across salt-water bridges could have already occurred in other European countries, given the species is present in the lower salinity regions of the Baltic Sea, the Kiel canal, and many European estuaries [@Brown2007]. Non-native fish legislation and regulations in England and Wales aim to control and contain pikeperch populations where, for example, control is through fish removals to reduce abundance and containment aims to limit their distribution to its current range [@Hickley2004; @Nolan2019a]. Consequently, should pikeperch disperse naturally in England from their current range into uninvaded river catchments via salt-water bridges then this would be contrary to these regulatory aims. However, the actual risk of pikeperch dispersing naturally in this manner remains highly uncertain [@Brown2007].
+
+Therefore, the aim here was to characterize the dispersal and movement patterns of non-native pikeperch in the lower River Thames, southeast England, and assess their movements across a gradient of salinity to identify their potential to disperse between river catchments via saltwater bridges [@Scott2008]. Specifically, pikeperch movements were tracked using acoustic telemetry to quantify their home range, movement distances and speeds, particularly in relation to salinity gradients and barriers, including locks and weirs, that potentially impede their movements.
+
+
+# Materials and methods
+
+## Application of acoustic telemetry to pikeperch movements in the lower Thames basin
+
+The study area used for acoustic telemetry was the lower section of the River Thames (hereafter *lower Thames*) that runs through London (Figure 1), receiving inputs from several tributary streams up- and downstream of its upper tidal limit at Teddington Lock and Weir (WGS84 latitude, longitude: 51.430123, -0.321107). A network of 18 VR2W, single-channel, acoustic receivers (Vemco, Canada; hereafter *receivers*) was deployed along the lower river between the town of Chertsey and the Thames Barrier, Royal Borough of Greenwich, as well as along the lower River Lee where it represents the eastern borders of the London boroughs of Enfield and Haringey (Figure 1; Table 1; Supplementary Material: Table S1). Twelve conductivity data loggers (hereafter loggers) were deployed between 20 receivers (Figure S1) to provide a surrogate measure of water salinity.
+
+Field studies began in April 2005, when pikeperch were captured for tagging using continuous electrofishing in the lower sections of the rivers Thames (*n* = 20, 246–765 total length [TL]) and Lee (*n* = 4; 525–640 mm TL) using a generator‐powered unit in a small boat (Table 2). The care and use of the captured pikeperch complied with the regulations of the UK Home Office under the Animals (Scientific Procedures) Act 1986 and was completed following ethical review and under project license. Accordingly, the captured pikeperch selected for tagging were anaesthetized (0.4-0.5 mL L^-1^ solution of 2-phenoxyethanol) and implanted internally with the acoustic transmitter by making an incision (10-12 mm) in the area between the pelvic fins and vent, with the incision closed with a single suture (coated Vicryl), and the wound then treated with a mixture of Orahesive and Cicatrin [see @Moore1990; and @Stakenas2009 for details]. The acoustic transmitters were all Vemco V8SC–1 (8 mm diameter, 26 mm length, 4.2 g). The period of anaesthesia and surgery lasted 3-6 min. Following recovery to normal behavior, the fish were released at their point of capture. Detection data from the receivers were downloaded every 3 months.
+
+
+<!-- Figure 1 -->
+
+```{r}
+#| label: figure1-inline
+#| eval: !expr inline
+#| echo: false
+#| fig-cap: "**Figure 1** Map showing the location of the study area in the UK (inset) and the study locations on the rivers Thames and Lee, with labels that correspond to those in Table 1. Blue circles represent freshwater sites, and red circles represent tidal sites. Asterisks (*) show the locations of barriers that likely inhibit pikeperch movement at certain times. The black dashed line bisects the River Thames at the tidal limit at Teddington Lock and Weir (WGS84 latitude, longitude: 51.430123, -0.321107). Note that the receivers and loggers were sometimes used in multiple locations throughout the study; for example, two loggers were used at Hambhaugh Island, Weybridge Lock (labels 16 and 17)."
+
+## if plot exists
+if (file.exists(here("plots", "figure2.jpg"))) {
+  knitr::include_graphics(here("plots", "figure2.jpg"))
+  # knitr::include_graphics(here("plots", "figure2-alt.png"))
+} else {
+  NULL
+}
+```
+
+<!-- Table 1 -->
+
+```{r}
+#| label: tab1-inline
+#| eval: !expr inline
+#| echo: false
+
+if (file.exists(here("table0.csv"))) {
+  tab0 <- fread(here("table0.csv"))
+  kable(tab0, 
+        caption = "**Table 1** Names and coordinates of the study sites on the rivers Thames and Lee, together with their receiver and logger code, and an indicator of whether they were tidal. Note: Each site is associated with a label that corresponds to Figure 1.", 
+        align = rep("l", dim(tab0)[2]), format = "pandoc", digits = 3)
+} else {
+  NULL
+}
+```
+
+::: landscape
+
+<!-- Table 2 -->
+
+```{r}
+#| label: tab2-inline
+#| eval: !expr inline
+#| echo: false
+
+if (file.exists(here("table2.csv"))) {
+  tab2 <- fread(here("table2.csv"))
+  kable(tab2, 
+        caption = '**Table 2** Details of the pikeperch tagged, including the "Tagging site" where they were tagged and their "Home range", calculated as the total distance it ranged during the study (those with no home range estimate were recorded only at a single location). Note: "Tagging site" differ from receiver "Location name" and the table has been ordered by the "Date" of tagging.', 
+        align = rep("l", dim(tab2)[2]), format = "pandoc", digits = 3)
+} else {
+  NULL
+}
+```
+:::
+
+## Data analyses
+
+Information about receivers, together with their detections, was compiled into a single database joined by *Location name*, accounting for their deployment and recovery timings at different locations (using [`R`](https://www.r-project.org/){.external target="_blank"} package `data.table`; @Barrett2023; Table S1). Distances between locations along the river course were calculated from river data cleaned and reprojected to the Transverse Mercator projection (using [`R`](https://www.r-project.org/){.external target="_blank"} packages `sf` and `riverdist`; @Tyers2023; @Pebesma2023) and used to calculate *Distance traveled (m)* between consecutive detections for all individual movements (using the `riverdistance` function in [`R`](https://www.r-project.org/){.external target="_blank"} package `riverdist`). Additional potentially useful explanatory variables were calculated and added to the database, including the *Time of day of departure* that was classified as day or night depending on whether the detection was after sunrise and before sunset at the specific location (using function `getSunlightTimes` in [`R`](https://www.r-project.org/){.external target="_blank"} package `suncalc`; @Thieurmel2022), and *Acoustic transmitter* number used to group movements by pikeperch in subsequent analyses (Figures S2 and S3). These data were used to calculate *Home range* for each pikeperch detected on more than one occasion, as the maximum distance traveled between two detections and their movement *Speed (m min^−1^)*, as the time taken (in minutes) to travel between locations of two consecutive detections (in meters).
+
+Measures of the aquatic environment were calculated for use as covariates in the models. Salinity measurements from loggers revealed regular spatial and temporal variations, but were incomplete records including occasional unusual recordings (Figure 2). To reduce the effect of likely spurious / erroneous salinity measurements on subsequent analyses, a cleaned version of the salinity measurements was prepared in which statistically outlying measurements taken at loggers at specific sites, i.e., those that were outside the 25-75th inter-quartile range of seasonally-adjusted measurements, were replaced with a linearly interpolated value using the `tsoutliers` function in [`R`](https://www.r-project.org/){.external target="_blank"} package `forecast` [@Hyndman2008]. Visual inspection suggested that the resulting cleaned Salinity time series were useable, except time series from loggers 1772, 1795, and 1800, which were excluded from subsequent analyses (Figure 2). Tide state, i.e., whether the tide was in flood (rising water surface elevation) or ebb (falling water surface elevation), was estimated as peaks and troughs of water surface elevation measured at Sheerness (available at <https://www.bodc.ac.uk/data/hosted_data_systems/sea_level/uk_tide_gauge_network/>) using the `findpeaks` function in [`R`](https://www.r-project.org/){.external target="_blank"} package `gsignal` [@Van-Boxtel2021].
+
+
+\pagebreak
+
+<!-- Figure 2 -->
+
+```{r}
+#| label: figure2-inline
+#| eval: !expr inline
+#| echo: false
+#| fig-cap: "**Figure 2** Plot showing the original and cleaned salinity measurements recorded at each logger. Cleaned salinity measurements were treated for statistical outliers. Even after cleaning, measurements taken on loggers 1772, 1795, and 1800 were considered unuseable."
+
+if (file.exists(here("plots", "salinity-plot-cleaned.jpg"))) {
+  knitr::include_graphics(here("plots", "salinity-plot-cleaned.jpg"))
+} else {
+  NULL
+}
+```
+
+\pagebreak
+
+
+*Distances travelled (m)* data were then joined with aquatic environment data by the *Date and time* of each movement departure *Location name*, allowing the calculation of water *Salinity at departure* and *Tide state at departure*, which were added to the database. In addition to these variables, the *Direction travelled* was inferred from consecutive detections, and recorded in the database as either upstream or downstream.
+
+The response variables *Distance travelled (m)* and *Direction travelled* were then selected for further analyses. *Distance travelled* was left-skewed, which was improved by a natural log transform, and was analysed using a linear mixed model assuming log-normal errors and including *Acoustic transmitter* as a grouping variable to account for repeat measurements on an individual. *Direction travelled* was analysed using a generalised linear model assuming binomial errors. These models were fit using [`R`](https://www.r-project.org/){.external target="_blank"} package `lme4` [@Bates2015] and `base` [@RCoreTeam2023], respectively. For each response variable, multiple candidate models were fitted and their fits compared using Akaike Information Criterion corrected for small sample size [AICc; @Burnham2003]; the candidate model best explaining variations in the response variable was taken to be that with the smallest AICc value, although models within 2 $\delta$AICc points of that model were also considered parsimonious descriptions of the observed data [@Burnham2003]. Marginal effects of explanatory variables were plotted for each response variable to help interpretation of the model fits using [`R`](https://www.r-project.org/){.external target="_blank"} package `ggplot2` [@Wickham2016]. All code for the analysis is provided in the GitHub repository at <https://github.com/CefasRepRes/pikeperch-homerange-salinity>.
+
+
+# Results
+
+## Overview of pikeperch movement data
+
+Pikeperch tagged on the River Lee (Acoustic transmitters 8, 50, 51, and 52) were recorded only at the receiver closest to their point of release and nowhere in the River Thames (Figure 3). Of the fish tagged in the River Thames, movements by most tagged pikeperch were in the form of regular down- and up-stream movements (Figure 3; Table 3), often associated with an in-river structure. For example, the pikeperch with Acoustic transmitter 46 made 50 repeated and regular movements among three stations in April 2005, which were mostly upstream from Walton bridge in the Thames Meadow (Receiver 4830; Table S1) to Weybridge Lock at Hambhaugh Island (Receiver 4826; Table S1) and back downstream to Walton bridge.
+
+
+::: landscape
+
+<!-- Table 3 -->
+
+```{r}
+#| label: tab3-inline
+#| eval: !expr inline
+#| echo: false
+
+if (file.exists(here("table3.csv"))) {
+  tab3 <- fread(here("table3.csv"))
+  tab3$`Acoustic transmitter`[duplicated(tab3$`Acoustic transmitter`)] <- NA
+  colnames(tab3) <- gsub("journey", "movement", colnames(tab3))
+  tab3 <- tab3[, -"Days at liberty"]
+  kable(tab3, 
+        caption = '**Table 3** Summary of acoustic tag detections and distances travelled by month. Note: absence of an "Acoustic transmitter" or "Period" indicates that no movement was recorded. "Number stations" is the number of stations with at least one "Day detected" from among the "Days at liberty". Details of the movements are given in down into up- and down-stream movements.', 
+        align = rep("l", dim(tab3)[2]), format = "pandoc", digits = 3)
+} else {
+  NULL
+}
+```
+
+:::
+
+<!-- Figure 3 -->
+
+```{r}
+#| label: figure3-inline
+#| eval: !expr inline
+#| echo: false
+#| fig-cap: "**Figure 3** Counts (N) and locations of pikeperch detections in the study area for each individual tagged fish. The black dashed line bisects the River Thames at the tidal limit at Teddington Lock and Weir (WGS84 latitude, longitude: 51.430123, -0.321107)."
+
+if (file.exists(here("plots", "figure4.jpg"))) {
+  knitr::include_graphics(here("plots", "figure4.jpg"))
+} else {
+  NULL
+}
+```
+
+\pagebreak
+
+
+The prevalence of these regular down- and up-stream movements was reflected in measures of tagged pikeperch home ranges and movement speeds. Although the smallest and largest home ranges were ~ 1.5 and 10 km, respectively, the home ranges of most fish were ~ 7 km and centred around acoustic receivers near the tidal limit at Teddington Lock and Weir (Receivers 4824 and 4831). Similarly, there were some notably fast (\> 70 m min^-1^) and slow (\< 1 m min^-1^) pikeperch movements, but with most movement speeds between 15 and 30 m min^-1^, and with no difference between the speeds of movements in up- versus downstream directions (mean m min^-1^ $\pm$ standard deviation; down-stream: 25.15 $\pm$ 15.95; up-stream: 25.06 $\pm$ 14.27). For some tagged pikeperch, no home ranges and speeds could not be calculated because they were detected on too few occasions (Table 3).
+
+Across the study area, median salinities were recorded by loggers up to 6.65 (range of logger: 0‰ - 44.80‰, Table 1). However, no pikeperch was recorded in an area where the median salinity was higher than 2.14 (range of logger: 1.77 - 2.67; Figure 2; Table 1). There was also a significant and negative relationships between the mean salinity recorded at each receiver and the number of detections of tagged pikerperch. Among the tagged pikeperch, only four moved to locations downstream of the tidal limit. Of these, one seemed to make only a single journey from the freshwater to the tidal zone at *Thames Path, Kew Bridge* (Acoustic transmitter 26), while another seemed to make that same journey two times (Acoustic transmitter 3). The two remaining tagged pikeperch (Acoustic transmitters 27 and 4), made 7 and 4 journeys to the tidal zone, including movements to *Thames Path, Kew Bridge* and *Chiswick Pier, Corney Reach Way* respectively. Of these, the movements between two receivers in freshwater tended to last longer than movements between a receiver in the freshwater and tidal zone or between two in the tidal zone (Figure 4). In most cases, these movements appear to be a discrete movement to the tidal zone that started and ended in the freshwater, albeit that tagged pikeperch detected at *Chiswick Pier, Corney Reach Way* could also be detected at *Thames Path, Kew Bridge*. There were, however, a few cases in which a tagged pikeperch seemed to move repeatedly between receivers in the tidal zone, the longest of which was 7 repeated movements in the tidal zone over 19 days (Figure 5).
+
+
+\pagebreak
+
+<!-- Figure 4 -->
+
+```{r}
+#| label: figure4-inline
+#| eval: !expr inline
+#| echo: false
+#| fig-cap: "**Figure 4** Duration of movements between receivers by tagged pikeperch, grouped by whether or not the receiver was in the tidal zone, i.e., downstream of the tidal limit. Note: the y-axis is on a square root scale. Note: the single movement of pikeperch with Acoustic transmitter 26 to the tidal zone that lasted ~ 90 days."
+
+if (file.exists(here("plots", "figure5.jpg"))) {
+  knitr::include_graphics(here("plots", "figure5.jpg"))
+} else {
+  NULL
+}
+```
+
+\pagebreak
+
+<!-- Figure 5 -->
+
+```{r}
+#| label: figure5-inline
+#| eval: !expr inline
+#| echo: false
+#| fig-cap: "**Figure 5** Plot showing the time spent at different receivers in the tidal zone on which the four tagged pikeperch were detected. Note: the *x*-axis is on a square root scale and differs for each panel."
+
+if (file.exists(here("plots", "figure7.jpg"))) {
+  knitr::include_graphics(here("plots", "figure7.jpg"))
+} else {
+  NULL
+}
+```
+
+\pagebreak
+
+
+## Influence of tidal state on pikeperch movements
+
+The model describing the most variation in *Distance travelled (m)* by pikeperch included both *Direction travelled* and *Salinity at departure* (to the power of 2) and suggested that distances travelled downstream increased as the salinity at departure increased, and distance travelled upstream increased up to a certain salinity (1‰) and then decreased thereafter, both irrespective of the tide state (Figure 6a and S4). This model explained 36% (Marginal $R^2$, Table 4) of the variation in the distances travelled by tagged pikeperch, and had substantially more empirical support (although $\lt$ 2 $\delta$AICc points) than the next most parsimonious model, which also included an effect of tide state. 
+
+Analyses of *Direction travelled* were inconclusive, with the model describing the most variation including *Tide state at departure*, suggesting that the probability of upstream movement was higher when the tide was flooding versus ebbing (Figures 4b and S5). This model explained only 1.3% (Marginal $R^2$, Table 4) of the variation in the direction that pikeperch chose to travel, and did not provide substantially more empirical support than the null model. Model coefficient estimates (Tables S3 and S4), diagnostic plots, and the [`R`](https://www.r-project.org/){.external target="_blank"} session info is provided in the supplementary materials.
+
+
+\pagebreak
+
+<!-- Table 4 -->
+
+```{r}
+#| label: tab4-inline
+#| eval: !expr inline
+#| echo: false
+
+if (file.exists(here("results", "aic-table.csv"))) {
+  tab5 <- fread(here("results", "aic-table.csv"))
+  tab5$`Response variable`[duplicated(tab5$`Response variable`)] <- NA
+  kable(tab5, 
+        caption = '**Table 4** Candidate models, their performance, and their selection statistics. Abbreviations in "Model Description" are: H = Salinity at departure; S = Tide state at departure; T = Time of day of departure; D = Direction travelled; L = Total length (mm); and X = Sex. Note: there is no conditional $R^2$ for the "Direction travelled" models because they did not include random terms.', 
+        align = rep("l", dim(tab5)[2]), format = "pandoc", digits = 3)
+} else {
+  NULL
+}
+```
+
+\pagebreak
+
+<!-- Figure 6 -->
+
+```{r}
+#| label: figure6-inline
+#| eval: !expr inline
+#| echo: false
+#| fig-cap: "**Figure 6** Marginal effects of salinity depending on direction (A) on distance travelled (in meters) in a single journey, and the tide state at departure (B) on the probability of travelling upstream (compared to downstream)."
+
+if (file.exists(here("plots", "figure6.jpg"))) {
+  knitr::include_graphics(here("plots", "figure6.jpg"))
+} else {
+  NULL
+}
+```
+
+\pagebreak
+
+
+# Discussion
+
+The application of acoustic telemetry to this freshwater pikeperch population revealed individual variability in their movements, with some having home ranges as small as 1.5 km and some as large as 10 km. These home range differences were consistent with the findings of @Fickling1985 and @Aarts2017, who both detected two components within pikeperch populations, one that tended to remain resident in specific areas and the other that was more mobile. The movements of those pikeperch were not related to the speed of their movements or body size [@Fickling1985], with this also the case here. The largest home ranges reported here are in line with some other movement studies on pikeperch [e.g., @Poulet2005], but with other studies indicating home ranges of 40 km can be typical and where individuals migrate across distances of 200 km [@Aarts2017].
+
+Populations of pikeperch are frequently encountered in waters of relative high salinity. For example, pikeperch make seasonal migrations into the Lithuanian coastal waters of the Baltic Sea where salinity levels are generally between 4.9‰ and 6.8‰ [@Lozys2004], but with Baltic pikeperch generally restricted to coastal areas of relatively low salinity that are also eutrophicated [@Lehtonen1996]. Pikeperch egg survival is, however, highest at 0.7‰ and decreases linearly to 6.7‰ where egg mortality is total [@Klinkhardt1989]. In a radio‐tracking study in Denmark, pikeperch revealed downstream movements in winter where some individuals were detected in a fjord where salinity levels were recorded to 30‰ [@Koed2002]. Physiological experiments suggest freshwater pikeperch might resist salinity changes by manipulation of their nitrogen metabolism [@Sadok2004]. Despite this apparent salinity tolerance, pikeperch in the River Thames here were only recorded in reaches of river where the maximum salinity recorded to 2.67‰, with only four moving into tidal areas and with these tidal movements generally starting and ending in fresh water. Although the best‐fitting model for distance traveled suggested that movements downstream increased as the salinity at departure increased, the effect was primarily measured across 1‰–2‰ and the models had relatively low values of explanatory value (as adjusted $R^2$). Accordingly, these downstream movements might have not necessarily been related to salinity but were perhaps driven by factors unable to be measured here, such as increased prey availability in downstream areas that resulted from movements with changes in the tidal state, although this can only be speculated.
+
+The best‐fitting and most parsimonious models did not include time of day as a significant predictor of movement, with this generally contrary to studies suggesting pikeperch activity is highest at dusk [e.g., @Poulet2005; and @Aarts2017] indicating swimming activity was highest in darkness in a Dutch lowland river. Although @Poulet2005 discussed that pikeperch activity may be the result of trade-offs between physiological requirements of temperature and light, the satisfaction of energy needs, and avoidance of predators. In tidal rivers, the osmoregulatory costs relating to regular salinity changes might also need to be considered in these trade-offs [@Sadok2004]. In @Aarts2017, movements of pikeperch to the seaward side of a dam from fresh water did occur, but with fish either returning to the freshwater side after foraging or dying if they remained there in periods of high salinity.
+
+It has been outlined that the tagged pikeperch in the River Thames were never detected in areas of relatively high salinity. However, some non-tagged pikeperch have been observed in areas of high salinity outside of this study. For example, one author of this study (S.S., *pers comm.*) captured a 90 mm pikeperch on 26th July 2006 in a seine net (35 m length with 2.5 m drop and a 5 mm fine knotless mesh centre) at London Yard, Millwall, Isle of Dogs (51.494666, -0.030080), upstream of logger 1773 *cf.* Table S2, when the salinity at that location at that time was 7.62‰ at 23.5 ^o^C. Moreover, in the Fumemorte Canal, France, salinity in summer can reach 5‰, with pikeperch present throughout the waterbody [@Poulet2005], @Lozys2004 recording pikeperch in the Baltic at 6.8‰. Thus, the euryhaline traits of pikeperch suggest that their invasive populations could disperse into new areas via movements across brackish or saltwater bridges [@Brown2007]. Indeed, such movements across saltwater bridges have already been outlined to occur between fresh water and brackish water in the Baltic [at least into salinities of 6.8‰; @Lozys2004]. In our study on River Thames pikeperch, we have no supporting evidence that movements across salinity gradients and salt bridges provide their invasive populations with a dispersal mechanism. However, we cannot definitively say it cannot happen, given such large-scale dispersal events might occur during episodic floods that cause both displacement of fish and reduced salinity levels [@Williamson2006], with these conditions not occurring during our study period.
+
+In summary, the movements of the tagged pikeperch in the tidal River Thames did not suggest a propensity for moving into habitats with relatively high salinity levels, with no movements into areas with salinities above 2.67‰, despite the species being generally capable of tolerating higher salinities, often having large home ranges (to 40 km), and being able to undertake large-scale movements across seasons (especially for spawning, e.g., to 200 km) [@Aarts2017; @Koed2002]. Although this suggests that the risk of their dispersal across a salt‐bridge in the Thames specifically appears low, this has a caveat that some non‐tagged individuals were encountered in areas of higher salinity. The movements of the tagged pikeperch indicated some variability among individuals, especially in relation to home range and speed of movement, with this consistent with other studies suggesting that their populations comprised resident and mobile individuals. Accordingly, it might be these more mobile individuals that present the higher risk of dispersing through salt‐bridges, but the results of this study suggest that this risk is low. Thus, control and containment programmes that aim to reduce their ecological impacts and prevent their further dispersal should be sufficient as species-specific invasion management strategies.
+
+
+# Acknowledgements
+
+This study was funded through research grants from the UK Department of Environment, Food and Rural Affairs (Defra), the European Commission (Marie Skłodowska-Curie Programme, awarded to S.S.) and the Natural Environment Research Council (NERC), with in-kind and direct support from the Environment Agency. We acknowledge the late P. Broxup for his assistance in the field. This study uses data from UK Tide Gauge Network, provided by the British Oceanographic Data Centre and funded by the UK Coastal Flood Forecasting (UKCFF) partners.
+
+# References
+
+::: {#refs}
+:::

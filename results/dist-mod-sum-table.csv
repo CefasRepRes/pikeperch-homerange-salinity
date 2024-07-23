@@ -1,0 +1,7 @@
+Variable,Estimate,Std. Error,Df,t value,p value
+Intercept,8.059,0.182,13.129,44.263,0
+Direction (u/s),0.124,0.057,317.993,2.176,0.03
+Salinity at departure,-0.032,0.216,325.495,-0.147,0.883
+Salinity at departure^2,0.248,0.114,322.501,2.184,0.03
+Direction (u/s) : Salinity at departure,0.896,0.194,318.046,4.623,0
+Direction (u/s) : Salinity at departure^2,-0.676,0.108,318.081,-6.243,0

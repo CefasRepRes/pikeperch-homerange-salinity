@@ -1,0 +1,232 @@
+---
+# Document details
+title: "Tracking the invasive and euryhaline pikeperch *Sander lucioperca* in the lower River Thames using acoustic telemetry indicates no movements into areas of relatively high salinity"
+# date: "`r format(Sys.time(), '%A %d %B %Y')`"
+author: "Saulius Stakėnas$^{1,2,*}$, Stephen D. Gregory$^{3,4}$, J. Robert Britton$^{4,+}$, Jessica E. Marsh$^{3,4,5}$, Ali Serhan Tarkan$^{4,6,7}$, Grzegorz Zięba$^{7}$, Keith J. Wesley$^{8}$ and Gordon H. Copp$^{1,4,7,9,*}$"
+authors: 
+  - name: Saulius Stakėnas$^{1,2,*}$
+    orcid: 0000-0001-5424-9221
+  - name: Stephen D. Gregory$^{3,4}$
+    orcid: 0000-0002-8230-0191
+  - name: J. Robert Britton$^{4,+}$
+    orcid: 0000-0003-1853-3086
+  - name: Jessica E. Marsh$^{3,4,5}$
+    orcid: 0000-0003-1154-4444
+  - name: Ali Serhan Tarkan$^{4,6,7}$
+    orcid: 0000-0001-8628-0514
+  - name: Grzegorz Zięba$^{6}$
+  - name: Keith J. Wesley$^{8}$
+  - name: Gordon H. Copp$^{1,4,7,9,*}$
+    orcid: 0000-0002-4112-3440
+corresponding: "J. Robert Britton [rbritton@bournemouth.ac.uk](mailto:rbritton@bournemouth.ac.uk)"
+abstract-title: "Affiliations"
+abstract: |
+
+  ^1^ Salmon & Freshwater Team, Centre for Environment, Fisheries & Aquaculture Science, Lowestoft, Suffolk, UK
+
+  ^2^ Department of Freshwater Ecology, Institute of Ecology of Vilnius University, Vilnius, Lithuania
+
+  ^3^ The Centre for Environment, Fisheries and Aquaculture Science, Weymouth, Dorset, UK
+  
+  ^4^ Department of Life and Environmental Sciences, Faculty of Science and Technology, Bournemouth University, Poole, Dorset, UK
+  
+  ^5^ Salmon and Trout Research Centre, Game and Wildlife Conservation Trust, Wareham, Dorset, UK
+
+  ^6^ Department of Basic Sciences, Faculty of Fisheries, Muğla Sıtkı Koçman University, Menteşe, Muğla, Turkey
+
+  ^7^ Department of Ecology and Vertebrate Zoology, Faculty of Biology and Environmental Protection, University of Lodz, Lodz, Poland
+
+  ^8^ Bedwell Fisheries Services & Fish Farms, Welham Green, Hertfordshire, UK
+
+  ^9^ Environmental & Life Sciences Graduate Programme, Trent University, Peterborough, Ontario, Canada
+
+  \* Deceased
+
+  \+ Corresponding author: {{< meta corresponding >}}
+
+# Output details
+format: 
+  html:
+    embed-resources: true
+    toc: true
+  # docx:
+  #   highlight-style: github
+filters: 
+  - docx-landscape.lua
+
+# References
+csl: ecology.csl # more at www.zotero.org/styles
+bibliography: references.bib
+link-citations: true
+
+# Analysis details
+version: "`r version$version.string`"
+packages: ""
+dependencies: ""
+---
+  
+```{r}
+#| label: "doc_setup"
+#| echo: false
+#| warning: false
+#| message: false
+
+# document setup ----------------------------------------------------------
+
+# clear workspace
+rm(list = ls())
+
+# libraries and functions
+library(here)
+source(here("scripts", "libraries-and-functions.R"))
+
+# knitr options
+options(knitr.kable.NA = "")
+
+# inline tables and figures
+inline <- TRUE
+endofms <- ifelse(inline, FALSE, TRUE)
+
+```
+
+# Supplementary material
+
+```{r}
+#| label: sessionInfo
+#| echo: true
+
+sessionInfo()
+
+```
+
+
+::: landscape
+
+<!-- Table S1 -->
+
+```{r}
+#| label: tabs1
+#| echo: false
+
+if (file.exists(here("table1.csv"))) {
+  tab1 <- fread(here("table1.csv"))
+  tab1$River[duplicated(tab1$River)] <- NA
+  kable(tab1, 
+        caption = '**Table S1** Study site locations, including river name and UK ordinance grid reference and WGS84 latitude / longitude coordinates, together with the acoustic receiver ("Receiver") and environmental logger ("Logger") used at each location. Note that receivers and loggers were moved between locations and recorded data "From" and "Until" different times; where "Until" is missing, the logger was recording at that location until the end of the project.', 
+        align = rep("l", dim(tab1)[2]), format = "pandoc", digits = 3)
+} else {
+  NULL
+}
+```
+
+:::
+
+
+::: landscape
+
+<!-- Table S2 -->
+
+```{r}
+#| label: tab5
+#| echo: false
+
+if (file.exists(here("table4.csv"))) {
+  tab4 <- fread(here("table4.csv"))
+  kable(tab4, 
+        caption = '**Table S2** Summary of salinity measurements at each location. Note that several "Location name" did not have environmental loggers.', 
+        align = rep("l", dim(tab4)[2]), format = "pandoc", digits = 3)
+} else {
+  NULL
+}
+```
+
+:::
+
+<!-- Table S3 -->
+
+```{r}
+#| label: tab6a
+#| echo: false
+
+if (file.exists(here("results", "dist-mod-sum-table.csv"))) {
+  tab6a <- fread(here("results", "dist-mod-sum-table.csv"))
+  kable(tab6a, 
+        caption = '**Table S3** Distance travelled model summary', 
+        align = rep("l", dim(tab6a)[2]), format = "pandoc", digits = 3)
+} else {
+  NULL
+}
+```
+
+\newpage
+
+
+<!-- Table S4 -->
+
+```{r}
+#| label: tab6b
+#| echo: false
+
+if (file.exists(here("results", "dir-mod-sum-table.csv"))) {
+  tab6b <- fread(here("results", "dir-mod-sum-table.csv"))
+  kable(tab6b, 
+        caption = '**Table S4** Direction travelled model summary', 
+        align = rep("l", dim(tab6b)[2]), format = "pandoc", digits = 3)
+} else {
+  NULL
+}
+```
+
+\newpage
+
+
+<!-- Figure S1 -->
+
+```{r}
+#| label: figureS1
+#| echo: false
+#| fig-cap: "**Figure S1** Plots showing the measures of salinity recorded by the loggers."
+
+knitr::include_graphics(here("plots", "salinity-plot.jpg"))
+```
+
+<!-- Figure S2 -->
+
+```{r}
+#| label: figureS2
+#| echo: false
+#| fig-cap: "**Figure S2** Plots showing the relationships between Distance travelled (m) and explanatory variables."
+
+knitr::include_graphics(here("plots", "dist_expl_plots.jpg"))
+```
+
+<!-- Figure S3 -->
+
+```{r}
+#| label: figureS3
+#| echo: false
+#| fig-cap: "**Figure S3** Plots showing the relationships between Direction travelled and explanatory variables."
+
+knitr::include_graphics(here("plots", "dir_expl_plots.jpg"))
+```
+
+<!-- Figure S4 -->
+
+```{r}
+#| label: figureS4
+#| echo: false
+#| fig-cap: "**Figure S4** Diagnostic plots showing the diagnostic plots for the top-ranked (best) log Distance travelled (m) statistical model."
+
+knitr::include_graphics(here("plots", "dist_best_diag_plots.jpg"))
+```
+
+<!-- Figure S5 -->
+
+```{r}
+#| label: figureS5
+#| echo: false
+#| fig-cap: "**Figure S5** Diagnostic plots for the top-ranked (best) Direction travelled statistical model. Note that the random effects were estimated as 0 for all Acoustic tags and the estimated coefficients and fits are equivalent to a simpler generalised linear model (rather than generalised linear mixed model)."
+
+knitr::include_graphics(here("plots", "dir_best_diag_plots.jpg"))
+```
+
